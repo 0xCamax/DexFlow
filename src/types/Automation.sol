@@ -41,28 +41,4 @@ library AutomationLib {
 
         (success, returnData) = payable(address(self.target)).call(callData);
     }
-
-    function modifyAutomation(Automation[10] storage registry, uint256 index, Automation memory newAutomation)
-        internal
-    {
-        require(msg.sender == registry[index].owner, "not allowed");
-        registry[index] = newAutomation;
-    }
-
-    function executeAutomation(Automation[10] storage registry, uint256 baseFee) internal {
-        for (uint16 i = 0; i < registry.length; i++) {
-            Automation memory automation = registry[i];
-            (bool perform, bytes memory performData) = checkUpkeep(automation, baseFee);
-            if (perform) {
-                (bool success,) = performUpkeep(automation, performData, baseFee);
-                automation.lastExec = block.timestamp;
-                if (success) {
-                    automation.failedExec = 0;
-                } else {
-                    automation.failedExec += 1;
-                }
-                modifyAutomation(registry, i, automation);
-            }
-        }
-    }
 }

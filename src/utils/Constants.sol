@@ -17,4 +17,6 @@ abstract contract ArbitrumConstants {
     IUniversalRouter public constant ROUTER = IUniversalRouter(0xA51afAFe0263b40EdaEf0Df8781eA9aa03E381a3);
     IPermit2 public constant PERMIT2 = IPermit2(0x000000000022D473030F116dDEE9F6B43aC78BA3);
     IPositionManager public constant POSITION_MANAGER = IPositionManager(0xd88F38F930b7952f2DB2432Cb002E7abbF3dD869);
+    address public constant WHALE = 0x0a8494F70031623C9C0043aff4D40f334b458b11;
+    address public constant DEV = 0xa14BB91455e3b70d2d4F59a0D3CbF35d939308Fc;
 }

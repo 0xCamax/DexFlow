@@ -16,14 +16,13 @@ abstract contract BaseHook is IHooks {
 
     address internal immutable poolManager;
 
-    modifier onlyPoolManager {
+    modifier onlyPoolManager() {
         require(msg.sender == poolManager, "not allowed");
         _;
-        
     }
 
-    constructor(address _poolManager){
-        poolManager == _poolManager;
+    constructor(address _poolManager) {
+        poolManager = _poolManager;
     }
 
     /// @inheritdoc IHooks
