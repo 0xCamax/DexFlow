@@ -86,4 +86,10 @@ contract AutomatedPayroll is IAutomationCompatible {
     function _modifyPayroll(Payroll memory _payroll, uint8 index) internal {
         payroll[index] = _payroll;
     }
+
+    function withdraw() external onlyOwner {
+        payable(msg.sender).transfer(address(this).balance);
+    }
+
+    receive() external payable {}
 }
