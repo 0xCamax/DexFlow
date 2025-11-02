@@ -60,7 +60,7 @@ contract AutomatedPayroll is IAutomationCompatible {
         uint256 fee = executor.getFee();
 
         (bool success,) = payable(address(executor)).call{value: fee}("");
-        
+
         emit Success(success);
     }
 

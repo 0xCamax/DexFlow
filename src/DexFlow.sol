@@ -21,7 +21,7 @@ contract DexFlow is AutomationHook {
     }
 
     function claimAutomationFees(address to) internal onlyOwner returns (bool success) {
-        (success, ) = payable(to).call{value: address(this).balance}("");
+        (success,) = payable(to).call{value: address(this).balance}("");
     }
 
     receive() external payable {
